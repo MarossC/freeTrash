@@ -41,7 +41,7 @@ if not os.path.exists(config["Location"]["Downloads"]):
 
 if not os.path.exists(config["Location"]["Output"]):
     while True:
-        oInput = input("Output not present in config, please enter:").replace('"', "")
+        oInput = input("Output not present in config, please enter: ").replace('"', "")
         if os.path.exists(oInput):
             config["Location"]["Output"] = oInput
             print("\n")
@@ -58,6 +58,9 @@ lFinalOutput = os.path.join(lOutput, datetime.today().strftime('%Y-%m-%d'))
 
 if os.path.exists(os.path.join(lOutput, datetime.today().strftime('%Y-%m-%d'))):
     lFinalOutput = lFinalOutput + "-" + str(numpy.random.default_rng().integers(low=0, high=9999, size=1))
+    os.mkdir(lFinalOutput)
+
+if not os.path.exists(lFinalOutput):
     os.mkdir(lFinalOutput)
 
 ######################## Funcs
